@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 清算指令合并配置表 -->
+<MergeList>
+	 <MergeCode>
+	 	<MergeType name="融资出款">1</MergeType> 
+		<list>
+			<qsCode name="融资到账款">1</qsCode>
+			<qsCode name="车险首付款">8</qsCode>
+		</list>
+	 </MergeCode>
+</MergeList>

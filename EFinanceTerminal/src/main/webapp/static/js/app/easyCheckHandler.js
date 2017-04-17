@@ -1,0 +1,7 @@
+/*! financing_clearing_system v1.0.0
+*  by [object Object]
+*  (c) 2014-2016 www.frontpay.cn
+* updated on 2016-11-14
+*  Licensed under Apache-2.0
+*/
+ !function(root,$){var defaults={el:"",templateId:""},CheckHandler={init:function(option){return this.option=$.extend({},defaults,option),this.id=this.option.id||"#easyCheckHandler",this.curObj=null,this.option.el&&this.option.templateId?void this.initEvent():void console.warn("el或templateId未配置")},initEvent:function(){var that=this;$(document).on("click",this.option.el,function(e){e.preventDefault(),that.show(this)}),$(document).on("click",this.option.commit,$.proxy(this.ajax,this))},show:function(el){var content=this.render(el);this.curObj=el,$(this.id).modal({title:"请确认审核级别",content:content})},render:function(el){var data=$(el).data();return template(this.option.templateId,data)},ajax:function(){var that=this,$form=$(this.id).find("form").eq(0),checkedLen=$form.find(":checked").length,data=$form.serialize(),level=($form.attr("action"),data.match(/checkLevel=(\d+)/)?data.match(/checkLevel=(\d+)/)[1]:0);if(!checkedLen)return void alertModalLayer({title:"请选择审核级别!"});var res={status:1,msg:""};1===res.status?($(that.id).modal("hide"),level>0&&successModalLayer({title:"成功添加审核权限！"}),that.check(level)):alertModalLayer({icon:"error",title:"设置失败"})},check:function(level){this.curObj&&($(this.curObj).data("level",level),this.curObj=null)}};root.easyCheckHandler=CheckHandler}(window,jQuery);

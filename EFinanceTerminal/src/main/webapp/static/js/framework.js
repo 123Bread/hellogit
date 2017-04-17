@@ -1,0 +1,7 @@
+/*! financing_clearing_system v1.0.0
+*  by [object Object]
+*  (c) 2014-2016 www.frontpay.cn
+* updated on 2016-11-14
+*  Licensed under Apache-2.0
+*/
+ ~function($){var init=function(){var popwin={show:function(){$(".fade").show(),$(".popwin").show()},hide:function(){$(".fade").hide(),$(".popwin").hide()}};$("#change").on("click",$.proxy(popwin.show,popwin)),$(".popwin .close").on("click",$.proxy(popwin.hide,popwin));var $collections=$("#j-popwin-tb").find(".scroll-list").find("li"),filterPlatform=function(i,item){var filter=$(item).attr("data-type");$collections.filter(function(){if("all"===filter)return $(this).show();var character=$(this).attr("data-char"),reg=new RegExp(filter,"g");return reg.test(character)?$(this).show():$(this).hide()})};$("#j-popwin-tb").tab({nav:".pop-tab",cls:"cur",callback:filterPlatform}),$(".scroll-list li").click(function(){$(this).addClass("cur").siblings().removeClass("cur")});var $channelList=$("#j-channel-list"),$changeContainer=$channelList.parent();$("#j-open-more").on("click",function(){var text=$(this).data("text"),defaultTxt=$(this).text();$(this).text(text),$(this).data("text",defaultTxt),$(this).toggleClass("up"),$changeContainer[0].scrollHeight>36&&$channelList.toggleClass("channel-scroll")})};$(document).ready(init)}(jQuery);

@@ -1,0 +1,7 @@
+/*! financing_clearing_system v1.0.0
+*  by [object Object]
+*  (c) 2014-2016 www.frontpay.cn
+* updated on 2016-11-14
+*  Licensed under Apache-2.0
+*/
+ require.config({baseUrl:"./javascript",paths:{echarts:"./echarts"}}),define("payweCharts",["echarts","echarts/chart/bar","echarts/theme/paywe"],function(Echarts,Line,Theme){var payweChart=function(obj,options){return this.init(obj,options)};return payweChart.prototype={constructor:payweChart,init:function(obj,options){return this.options=options,this.obj=obj,this.charts=Echarts.init(this.obj),Theme&&this.getCharts().setTheme(Theme),options&&this.setOption(options),this},setDefaultOption:function(data,options){if(options&&options.labels&&(data.xAxis[0].data=options.labels),options&&options.data){for(var d=options.data,legendData=[],series=[],i=0,len=d.length;i<len;i++)legendData.push(d[i].name||""),series.push({name:d[i].name,type:"bar",data:d[i].data});data.legend.data=legendData,data.series=series}return data},setData:function(options){if(!options||!options.labels||!options.data)return void console.log("请检查配置参数！");var defaults=$.extend({},Theme);this.data=this.setDefaultOption(defaults,options),this.charts.setOption(this.data)},getCharts:function(){return this.charts}},window.payweChart=payweChart,payweChart});

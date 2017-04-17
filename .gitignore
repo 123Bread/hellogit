@@ -1,0 +1,10 @@
+/target
+/bin
+/.settings
+/.classpath
+/.project
+/log
+/logs
+*.log
+disconf.properties
+disconf/download
