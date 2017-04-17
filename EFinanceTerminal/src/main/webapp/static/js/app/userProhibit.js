@@ -1,7 +1,0 @@
-/*! financing_clearing_system v1.0.0
-*  by [object Object]
-*  (c) 2014-2016 www.frontpay.cn
-* updated on 2016-11-14
-*  Licensed under Apache-2.0
-*/
- !function(root,$){"use strict";var prohibitHandler={init:function(el,tid){this.el=el,this.tid=tid,this.id="#Modal_prohibit",this.$el=$(this.el),this.initEvent()},initEvent:function(){var that=this;$(document).on("click",this.el,function(e){e.preventDefault();var url=$(this).attr("href");$(this).is(".disabled")||that.popup(url)}),$(document).on("click","#j-prohibit-commit",function(){that.submit(this)})},popup:function(url){url&&this.__show()},__show:function(data){data={id:"ta001",name:"习大大",channel:"允升",charge:0,draw:1,resetPwd:0};var content=template(this.tid,data);this.show(content)},show:function(content){content=content||"",$(this.id).modal({title:"选择解除禁止项",content:content})},submit:function(el){function completeHandler(res){res={status:1,msg:""},1===res.status?($(that.id).modal("hide"),successModalLayer({title:"保存成功！",content:"操作成功，等待审核"})):alertModalLayer({icon:"error",title:"设置失败"})}var that=this,$form=$(el).closest("form");$form.attr("action"),$form.serialize();completeHandler()}};$(function(){prohibitHandler.init(".j-prohibit","j-prohibit-template")})}(window,jQuery);
